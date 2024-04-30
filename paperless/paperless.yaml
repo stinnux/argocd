@@ -368,11 +368,9 @@ spec:
         - name: paperless-data
           persistentVolumeClaim:
             claimName: "paperless-data"
-	    capacity: 15Gi
         - name: paperless-media
           persistentVolumeClaim:
             claimName: "paperless-media"
-            capacity: 15Gi
         - name: paperless-export
           persistentVolumeClaim:
             claimName: "paperless-export"
