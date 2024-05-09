@@ -297,7 +297,6 @@ data:
   PAPERLESS_CONSUMER_IGNORE_PATTERNS: "[\".DS_Store\", \".DS_STORE/*\", \"._*\", \".stfolder/*\", \".stversions/*\", \".localized/*\", \"desktop.ini\"]"
   PAPERLESS_CONSUMER_POLLING_DELAY: "10"
   PAPERLESS_CONSUMER_POLLING_RETRY_COUNT: "5"
-  PAPERLESS_CONSUMER_ENABLE_BARCODES: "true"
   PAPERLESS_CONSUMER_POLLING: "10"
   PAPERLESS_CONSUMER_ENABLE_BARCODES: "true"
   PAPERLESS_CONSUMER_BARCODE_TIFF_SUPPORT: "true"
@@ -352,12 +351,12 @@ spec:
           volumeMounts:
             - mountPath: /usr/src/paperless/data
               name: paperless-data
- 	    - mountPath: /user/src/paperless/data-new
-	      name: paperless-data-new
+            - mountPath: /user/src/paperless/data-new
+              name: paperless-data-new
             - mountPath: /usr/src/paperless/media
               name: paperless-media
             - mountPath: /usr/src/paperless/media-new
-	      name: paperless-media-new
+              name: paperless-media-new
             - mountPath: /usr/src/paperless/export
               name: paperless-export
             - mountPath: /usr/src/paperless/consume
