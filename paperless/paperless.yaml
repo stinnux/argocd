@@ -311,6 +311,36 @@ data:
   USERMAP_UID: "1000"
   USERMAP_GID: "100"
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    io.kompose.service: paperless-app
+  name: paperless-media-new
+  namespace: paperless
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 50Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  labels:
+    io.kompose.service: paperless-app
+  name: paperless-data-new
+  namespace: paperless
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn
+  resources:
+    requests:
+      storage: 50Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -374,24 +404,12 @@ spec:
         - name: paperless-data-new
           persistentVolumeClaim:
             claimName: "paperless-data-new"
-            spec:
-              accessModes:
-                - ReadWriteOnce
-              resources:
-                requests:
-                  storage: 50Gi
         - name: paperless-media
           persistentVolumeClaim:
             claimName: "paperless-media"
         - name: paperless-media-new
           persistentVolumeClaim:
             claimName: "paperless-media-new"
-            spec:
-              accessModes:
-                - ReadWriteOnce
-              resources:
-                requests:
-                  storage: 50Gi
         - name: paperless-export
           persistentVolumeClaim:
             claimName: "paperless-export"
