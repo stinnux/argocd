@@ -377,10 +377,9 @@ spec:
             spec:
               accessModes:
                 - ReadWriteOnce
-              storageClassName: longhorn
-                resources:
-                  requests:
-                    storage: 50Gi
+              resources:
+                requests:
+                  storage: 50Gi
         - name: paperless-media
           persistentVolumeClaim:
             claimName: "paperless-media"
@@ -390,10 +389,9 @@ spec:
             spec:
               accessModes:
                 - ReadWriteOnce
-              storageClassName: longhorn
-                resources:
-                  requests:
-                    storage: 50Gi
+              resources:
+                requests:
+                  storage: 50Gi
         - name: paperless-export
           persistentVolumeClaim:
             claimName: "paperless-export"
