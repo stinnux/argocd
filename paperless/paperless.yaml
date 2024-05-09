@@ -352,8 +352,12 @@ spec:
           volumeMounts:
             - mountPath: /usr/src/paperless/data
               name: paperless-data
+ 	    - mountPath: /user/src/paperless/data-new
+	      name: paperless-data-new
             - mountPath: /usr/src/paperless/media
               name: paperless-media
+            - mountPath: /usr/src/paperless/media-new
+	      name: paperless-media-new
             - mountPath: /usr/src/paperless/export
               name: paperless-export
             - mountPath: /usr/src/paperless/consume
@@ -368,9 +372,29 @@ spec:
         - name: paperless-data
           persistentVolumeClaim:
             claimName: "paperless-data"
+        - name: paperless-data-new
+          persistentVolumeClaim:
+            claimName: "paperless-data-new"
+            spec:
+              accessModes:
+                - ReadWriteOnce
+              storageClassName: longhorn
+                resources:
+                  requests:
+                    storage: 50Gi
         - name: paperless-media
           persistentVolumeClaim:
             claimName: "paperless-media"
+        - name: paperless-media-new
+          persistentVolumeClaim:
+            claimName: "paperless-media-new"
+            spec:
+              accessModes:
+                - ReadWriteOnce
+              storageClassName: longhorn
+                resources:
+                  requests:
+                    storage: 50Gi
         - name: paperless-export
           persistentVolumeClaim:
             claimName: "paperless-export"
