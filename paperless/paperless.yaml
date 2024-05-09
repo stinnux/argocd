@@ -384,6 +384,8 @@ spec:
               name: paperless-data-new
             - mountPath: /usr/src/paperless/media
               name: paperless-media-new
+            - mountPath: /usr/src/paperless/media-old
+              name: paperless-media
             - mountPath: /usr/src/paperless/export
               name: paperless-export
             - mountPath: /usr/src/paperless/consume
