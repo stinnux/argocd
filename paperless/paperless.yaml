@@ -375,13 +375,14 @@ spec:
             failureThreshold: 5
             periodSeconds: 30
             timeoutSeconds: 10
+            initialDelaySeconds: 300
           ports:
             - containerPort: 8000
           resources: {}
           volumeMounts:
-            - mountPath: /usr/src/paperless/data
+            - mountPath: /usr/src/paperless/data-old
               name: paperless-data
-            - mountPath: /usr/src/paperless/data-new
+            - mountPath: /usr/src/paperless/data
               name: paperless-data-new
             - mountPath: /usr/src/paperless/media
               name: paperless-media
