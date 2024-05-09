@@ -381,7 +381,7 @@ spec:
           volumeMounts:
             - mountPath: /usr/src/paperless/data
               name: paperless-data
-            - mountPath: /user/src/paperless/data-new
+            - mountPath: /usr/src/paperless/data-new
               name: paperless-data-new
             - mountPath: /usr/src/paperless/media
               name: paperless-media
