@@ -386,8 +386,6 @@ spec:
               name: paperless-media-new
             - mountPath: /usr/src/paperless/media-old
               name: paperless-media
-            - mountPath: /usr/src/paperless/media-restore
-              name: paperless-media-restore
             - mountPath: /usr/src/paperless/export
               name: paperless-export
             - mountPath: /usr/src/paperless/consume
@@ -411,9 +409,6 @@ spec:
         - name: paperless-media-new
           persistentVolumeClaim:
             claimName: "paperless-media-new"
-        - name: paperless-media-restore
-          persistentVolumeClaim:
-            claimName: "paperless-media-restore"
         - name: paperless-export
           persistentVolumeClaim:
             claimName: "paperless-export"
