@@ -15,6 +15,6 @@ spec:
        helm:
          valuesFile: 
          - $values/homepage/values.yaml
-    - repoURL: https://github.com/stinnux/argocd
-      targetRevision: HEAD
-      ref: values 
+     - repoURL: https://github.com/stinnux/argocd
+       targetRevision: HEAD
+       ref: values 
