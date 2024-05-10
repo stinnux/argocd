@@ -1,0 +1,20 @@
+apiVesion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+   name: homepage-prod
+   namespace: argocd
+spec:
+   destination:
+      namespace: homepage
+      name: homepage
+   project: default
+   sources:
+     - chart: homepage
+       repoURL: 'https://jameswynn.github.io/helm-charts'
+       targetRevision: 1.2.3
+       helm:
+         valuesFile: 
+         - $values/homepage/values.yaml
+    - repoURL: https://github.com/stinnux/argocd
+      targetRevision: HEAD
+      ref: values 
