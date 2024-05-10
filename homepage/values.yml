@@ -9,7 +9,7 @@ serviceAccount:
   # Specify a different service account name
   name: homepage
   # Create service account. Needed when RBAC is enabled.
-  create: false
+  create: true
 
 service:
   main:
