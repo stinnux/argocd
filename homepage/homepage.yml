@@ -6,7 +6,7 @@ metadata:
 spec:
    destination:
       namespace: homepage
-      name: homepage
+      server: 'https://kubernetes.default.svc'
    project: default
    sources:
      - repoURL: 'https://jameswynn.github.io/helm-charts'
