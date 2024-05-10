@@ -11,5 +11,5 @@ spec:
     - match: Host(`home.k8s.stinnux.cloud`)
       kind: Rule
       services:
-        - name: homepage
+        - name: homepage-prod
           port: 3000
