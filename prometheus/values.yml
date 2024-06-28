@@ -3,7 +3,6 @@ grafana:
     enabled: true
     annotations:
       traefik.ingress.kubernetes.io/router.entrypoints: websecure
-      traefik.ingress.kubernetes.io/router.tls: true
     hosts:
     - grafana.k8s.stinnux.cloud
   persistence:
