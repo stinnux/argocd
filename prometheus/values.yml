@@ -1,0 +1,14 @@
+grafana:
+  ingress:
+    enabled: true
+      hosts:
+        - grafana.k8s.stinnux.cloud
+  persistence:
+    enabled: true
+    type: sts
+    storageClassName: "longhorn"
+    accessModes:
+       - ReadWriteOnce
+    size: 100Gi
+    finalizers:
+       - kubernetes.io/pvc-protection
