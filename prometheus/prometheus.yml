@@ -33,3 +33,5 @@ spec:
     kind: ValidatingWebhookConfiguration
     jsonPointers:
       - /webhooks
+  sync-options: 
+      - Replace=true
