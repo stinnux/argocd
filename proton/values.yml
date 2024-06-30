@@ -47,7 +47,7 @@ persistence:
   config:
     enabled: true
     mountPath: /root
-    size: 30G
+    size: 100G
     retain: true
 
 # -- Probe configuration
