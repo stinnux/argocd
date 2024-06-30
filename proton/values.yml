@@ -13,6 +13,8 @@ image:
   # -- image pull policy
   pullPolicy: IfNotPresent
 
+args: init
+
 # -- environment variables.
 # @default -- See below
 env:
