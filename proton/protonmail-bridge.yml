@@ -14,7 +14,7 @@ spec:
     targetRevision: 5.4.2
     helm:
       valueFiles:
-      - $values/charts/proton/values.yaml
+      - $values/proton/values.yaml
   - repoURL: 'https://github.com/stinnux/argocd.git'
     targetRevision: main
     ref: values
