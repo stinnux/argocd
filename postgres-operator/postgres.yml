@@ -11,11 +11,13 @@ spec:
   sources:
   - repoURL: 'https://opensource.zalando.com/postgres-operator/charts/postgres-operator'
     chart: postgres-operator
+    targetRevision: 1.12.2
     helm:
       valueFiles:
       - $values/postgres-operator/values.yml
   - repoURL: 'https://opensource.zalando.com/postgres-operator/charts/postgres-operator-ui'
     chart: postgres-operator-ui
+    targetRevision: 1.12.2
     helm:
       valueFiles:
       - $values/postgres-operator/values-ui.yml
