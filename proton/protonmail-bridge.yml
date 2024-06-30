@@ -15,6 +15,6 @@ spec:
     helm:
       valueFiles:
       - $values/proton/values.yaml
-  - repoURL: 'https://github.com/stinnux/argocd.git'
-    targetRevision: main
+  - repoURL: https://github.com/stinnux/argocd
+    targetRevision: HEAD
     ref: values
