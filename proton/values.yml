@@ -13,13 +13,11 @@ image:
   # -- image pull policy
   pullPolicy: IfNotPresent
 
-command: "tail -f /dev/null"
-
 # -- environment variables.
 # @default -- See below
 env:
   # -- Set the container timezone
-  TZ: UTC
+  TZ: Europe/Berlin
 
 # -- Configures service settings for the chart.
 # @default -- See values.yaml
