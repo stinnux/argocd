@@ -1,0 +1,7 @@
+ingress:
+  enabled: true
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure
+  hosts:
+  - host: postgres.k8s.stinnux.cloud
+    paths: ["/"]
