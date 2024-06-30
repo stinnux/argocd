@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: protonmail-prod
+  namespace: argocd
+spec:
+  destination:
+    namespace: protonmail
+    server: 'https://kubernetes.default.svc'
+  project: default
+  sources:
+  - repoURL: 'https://k8s-at-home.com/charts'
+    chart: protonmail-bridge
+    targetRevision: 5.4.2
+    helm:
+      valueFiles:
+      - $values/charts/proton/values.yaml
+  - repoURL: 'https://github.com/stinnux/argocd.git'
+    targetRevision: main
+    ref: values

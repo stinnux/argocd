@@ -7,9 +7,9 @@
 
 image:
   # -- image repository
-  repository: shenxn/protonmail-bridge
+  repository: docker pull ganeshlab/protonmail-bridge
   # -- image tag
-  tag: 2.4.0-build
+  tag: dev
   # -- image pull policy
   pullPolicy: IfNotPresent
 
