@@ -7,7 +7,7 @@
 
 image:
   # -- image repository
-  repository: docker pull ganeshlab/protonmail-bridge
+  repository: ganeshlab/protonmail-bridge
   # -- image tag
   tag: dev
   # -- image pull policy
