@@ -54,7 +54,7 @@ ingress:
   - host: mealie.k8s.stinnux.cloud
     paths:
     - path: /
-      pathType: Exact
+      pathType: Prefix
 
 resources: {}
 
