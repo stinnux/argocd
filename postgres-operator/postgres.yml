@@ -24,3 +24,4 @@ spec:
 
   - repoURL: https://github.com/stinnux/argocd
     targetRevision: HEAD
+    ref: values
