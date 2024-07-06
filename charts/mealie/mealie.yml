@@ -14,7 +14,7 @@ spec:
     targetRevision: 0.0.10
     helm:
       valueFiles:
-      - $values/mealie/values.yml
+      - $values/charts/mealie/values.yml
 
-  - repoURL: https://github.com/stinnux/argocd/charts
+  - repoURL: https://github.com/stinnux/argocd/
     targetRevision: HEAD
