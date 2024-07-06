@@ -30,19 +30,19 @@ spec:
         io.kompose.service: paperless-av
     spec:
       containers:
-        - image: mkodockx/docker-clamav:alpine
+      - image: mkodockx/docker-clamav:alpine
+        name: paperless-av
+        ports:
+        - containerPort: 3310
+        resources: {}
+        volumeMounts:
+        - mountPath: /var/lib/clamav
           name: paperless-av
-          ports:
-            - containerPort: 3310
-          resources: {}
-          volumeMounts:
-            - mountPath: /var/lib/clamav
-              name: paperless-av
       restartPolicy: Always
       volumes:
-        - name: paperless-av
-          persistentVolumeClaim:
-            claimName: paperless-av
+      - name: paperless-av
+        persistentVolumeClaim:
+          claimName: paperless-av
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -53,7 +53,7 @@ metadata:
   namespace: paperless
 spec:
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteOnce
   storageClassName: longhorn
   resources:
     requests:
@@ -72,9 +72,9 @@ metadata:
   namespace: paperless
 spec:
   ports:
-    - name: "paperless-av"
-      port: 3310
-      targetPort: 3310
+  - name: "paperless-av"
+    port: 3310
+    targetPort: 3310
   selector:
     io.kompose.service: paperless-av
 ---
@@ -101,11 +101,11 @@ spec:
         io.kompose.service: paperless-broker
     spec:
       containers:
-        - image: redis:6.0
-          name: paperless-broker
-          ports:
-            - containerPort: 6379
-          resources: {}
+      - image: redis:6.0
+        name: paperless-broker
+        ports:
+        - containerPort: 6379
+        resources: {}
       restartPolicy: Always
 ---
 apiVersion: v1
@@ -119,9 +119,9 @@ metadata:
   namespace: paperless
 spec:
   ports:
-    - name: paperless-broker
-      port: 6379
-      targetPort: 6379
+  - name: paperless-broker
+    port: 6379
+    targetPort: 6379
   selector:
     io.kompose.service: paperless-broker
 ---
@@ -150,28 +150,28 @@ spec:
         io.kompose.service: paperless-db
     spec:
       containers:
-        - env:
-            - name: POSTGRES_DB
-              value: paperless
-            - name: POSTGRES_PASSWORD
-              value: paperless
-            - name: POSTGRES_USER
-              value: paperless
-            - name: PGDATA
-              value: /var/lib/postgresql/data/pgdata
-          image: postgres:13
-          name: paperless-db
-          resources: {}
-          ports:
-            - containerPort: 5432
-          volumeMounts:
-            - mountPath: /var/lib/postgresql/data
-              name: db-claim0
+      - env:
+        - name: POSTGRES_DB
+          value: paperless
+        - name: POSTGRES_PASSWORD
+          value: paperless
+        - name: POSTGRES_USER
+          value: paperless
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
+        image: postgres:13
+        name: paperless-db
+        resources: {}
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - mountPath: /var/lib/postgresql/data
+          name: db-claim0
       restartPolicy: Always
       volumes:
-        - name: db-claim0
-          persistentVolumeClaim:
-            claimName: db-claim0
+      - name: db-claim0
+        persistentVolumeClaim:
+          claimName: db-claim0
 ---
 apiVersion: v1
 kind: Service
@@ -184,9 +184,9 @@ metadata:
   namespace: paperless
 spec:
   ports:
-    - name: paperless-db
-      port: 5432
-      targetPort: 5432
+  - name: paperless-db
+    port: 5432
+    targetPort: 5432
   selector:
     io.kompose.service: paperless-db
 ---
@@ -229,31 +229,31 @@ spec:
         io.kompose.service: paperless-ocr
     spec:
       containers:
-        - name: gotenberg
-          image: gotenberg/gotenberg:7
-          args:
-            - "gotenberg"
-            - "--uno-listener-start-timeout=30s"
-            - "--chromium-disable-routes=true"
-          securityContext:
-            privileged: false
-            runAsUser: 1001
-          resources:
-            limits:
-              cpu: 500m
-            requests:
-              cpu: 200m
-          ports:
-            - containerPort: 3000
-        - name: tika
-          image: logicalspark/docker-tikaserver:1.28.4
-          resources:
-            limits:
-              cpu: 500m
-            requests:
-              cpu: 200m
-          ports:
-            - containerPort: 9998
+      - name: gotenberg
+        image: gotenberg/gotenberg:7
+        args:
+        - "gotenberg"
+        - "--uno-listener-start-timeout=30s"
+        - "--chromium-disable-routes=true"
+        securityContext:
+          privileged: false
+          runAsUser: 1001
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m
+        ports:
+        - containerPort: 3000
+      - name: tika
+        image: logicalspark/docker-tikaserver:1.28.4
+        resources:
+          limits:
+            cpu: 500m
+          requests:
+            cpu: 200m
+        ports:
+        - containerPort: 9998
       restartPolicy: Always
 ---
 apiVersion: v1
@@ -267,12 +267,12 @@ metadata:
   namespace: paperless
 spec:
   ports:
-    - name: gotenberg
-      port: 3000
-      targetPort: 3000
-    - name: tika
-      port: 9998
-      targetPort: 9998
+  - name: gotenberg
+    port: 3000
+    targetPort: 3000
+  - name: tika
+    port: 9998
+    targetPort: 9998
   selector:
     io.kompose.service: paperless-ocr
 ---
@@ -290,6 +290,7 @@ data:
   PAPERLESS_TIKA_ENDPOINT: http://paperless-ocr:9998
   PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://paperless-ocr:3000
   PAPERLESS_TIME_ZONE: Europe/Berlin
+  PAPERLESS_EMAIL_CERTIFICATE_LOCATION: /usr/src/paperless/data/protonmail.crt
   PAPERLESS_OCR_LANGUAGE: "deu"
   PAPERLESS_OCR_PAGES: "5"
   PAPERLESS_CONSUMER_RECURSIVE: "true"
@@ -320,7 +321,7 @@ metadata:
   namespace: paperless
 spec:
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteOnce
   storageClassName: longhorn
   resources:
     requests:
@@ -335,7 +336,7 @@ metadata:
   namespace: paperless
 spec:
   accessModes:
-    - ReadWriteOnce
+  - ReadWriteOnce
   storageClassName: longhorn
   resources:
     requests:
@@ -361,60 +362,60 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-        - name: paperless-app
-          envFrom:
-            - configMapRef:
-                name: paperless-config
-          image: ghcr.io/paperless-ngx/paperless-ngx:latest
-          livenessProbe:
-            exec:
-              command:
-                - curl
-                - -f
-                - http://localhost:8000
-            failureThreshold: 5
-            periodSeconds: 30
-            timeoutSeconds: 10
-            initialDelaySeconds: 300
-          ports:
-            - containerPort: 8000
-          resources: {}
-          volumeMounts:
-            - mountPath: /usr/src/paperless/data
-              name: paperless-data-new
-            - mountPath: /usr/src/paperless/media
-              name: paperless-media-new
-            - mountPath: /usr/src/paperless/media-old
-              name: paperless-media
-            - mountPath: /usr/src/paperless/export
-              name: paperless-export
-            - mountPath: /usr/src/paperless/consume
-              name: paperless-consume
-            - mountPath: /tmp
-              name: paperless-tmp
+      - name: paperless-app
+        envFrom:
+        - configMapRef:
+            name: paperless-config
+        image: ghcr.io/paperless-ngx/paperless-ngx:latest
+        livenessProbe:
+          exec:
+            command:
+            - curl
+            - -f
+            - http://localhost:8000
+          failureThreshold: 5
+          periodSeconds: 30
+          timeoutSeconds: 10
+          initialDelaySeconds: 300
+        ports:
+        - containerPort: 8000
+        resources: {}
+        volumeMounts:
+        - mountPath: /usr/src/paperless/data
+          name: paperless-data-new
+        - mountPath: /usr/src/paperless/media
+          name: paperless-media-new
+        - mountPath: /usr/src/paperless/media-old
+          name: paperless-media
+        - mountPath: /usr/src/paperless/export
+          name: paperless-export
+        - mountPath: /usr/src/paperless/consume
+          name: paperless-consume
+        - mountPath: /tmp
+          name: paperless-tmp
       volumes:
-        - name: paperless-consume
-          nfs:
-            server: nfs.stinnux.cloud
-            path: /NFS/scan
-        - name: paperless-data
-          persistentVolumeClaim:
-            claimName: "paperless-data"
-        - name: paperless-data-new
-          persistentVolumeClaim:
-            claimName: "paperless-data-new"
-        - name: paperless-media
-          persistentVolumeClaim:
-            claimName: "paperless-media"
-        - name: paperless-media-new
-          persistentVolumeClaim:
-            claimName: "paperless-media-new"
-        - name: paperless-export
-          persistentVolumeClaim:
-            claimName: "paperless-export"
-        - name: paperless-tmp
-          persistentVolumeClaim:
-            claimName: "paperless-tmp"
+      - name: paperless-consume
+        nfs:
+          server: nfs.stinnux.cloud
+          path: /NFS/scan
+      - name: paperless-data
+        persistentVolumeClaim:
+          claimName: "paperless-data"
+      - name: paperless-data-new
+        persistentVolumeClaim:
+          claimName: "paperless-data-new"
+      - name: paperless-media
+        persistentVolumeClaim:
+          claimName: "paperless-media"
+      - name: paperless-media-new
+        persistentVolumeClaim:
+          claimName: "paperless-media-new"
+      - name: paperless-export
+        persistentVolumeClaim:
+          claimName: "paperless-export"
+      - name: paperless-tmp
+        persistentVolumeClaim:
+          claimName: "paperless-tmp"
 ---
 apiVersion: v1
 kind: Service
@@ -428,25 +429,25 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - name: "paperless-app"
-      port: 8000
-      targetPort: 8000
+  - name: "paperless-app"
+    port: 8000
+    targetPort: 8000
   selector:
     io.kompose.service: paperless-app
 ---
 kind: IngressRoute
 apiVersion: traefik.containo.us/v1alpha1
 metadata:
-  name:      paperless-ingress
+  name: paperless-ingress
   namespace: paperless
 spec:
   entryPoints:
-    - websecure
+  - websecure
   routes:
-    - match: Host(`paperless.k8s.stinnux.cloud`)
-      kind: Rule
-      services:
-        - name: paperless-app
-          port: 8000
+  - match: Host(`paperless.k8s.stinnux.cloud`)
+    kind: Rule
+    services:
+    - name: paperless-app
+      port: 8000
 
 
