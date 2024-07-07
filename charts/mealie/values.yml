@@ -55,6 +55,11 @@ ingress:
     paths:
     - path: /
       pathType: Prefix
+  tls:
+    options:
+      sniStrict: false
+
+
 
 resources: {}
 
@@ -69,12 +74,12 @@ resources: {}
 #   cpu: 100m
 #   memory: 128Mi
 
-# autoscaling:
-#   enabled: true
-#   minReplicas: 1
-#   maxReplicas: 3
-#   targetCPUUtilizationPercentage: 80
-#   # targetMemoryUtilizationPercentage: 80
+autoscaling:
+  enabled: true
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
 
 nodeSelector: {}
 
