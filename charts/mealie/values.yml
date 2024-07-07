@@ -47,7 +47,7 @@ mealie:
   initialDelaySeconds: 10
 
 ingress:
-  enabled: true
+  enabled: false
   annotations:
     traefik.ingress.kubernetes.io/router.entrypoints: websecure
   hosts:
