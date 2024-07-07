@@ -93,4 +93,4 @@ storage:
   size: 50G
   # -- The accessMode that is supported. If using ReadWriteMany multiple pods will be created. If using ReadWriteOnce a single pod will be used.
   accessMode: ReadWriteMany
-  storageClassName: longhorn
+  className: longhorn
