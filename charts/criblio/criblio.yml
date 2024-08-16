@@ -14,7 +14,7 @@ spec:
     targetRevision: 4.8.1
     helm:
       valueFiles:
-      - $values/charts/criblio/logestream-leader.yml
+      - $values/charts/criblio/logstream-leader.yml
 
   - repoURL: 'https://criblio.github.io/helm-charts/'
     chart: logstream-workergroup
