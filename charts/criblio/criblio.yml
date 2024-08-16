@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: criblio-prod
+  namespace: argocd
+spec:
+  destination:
+    namespace: cribl-stream
+    server: 'https://kubernetes.default.svc'
+  project: default
+  sources:
+  - repoURL: 'https://criblio.github.io/helm-charts/'
+    chart: logstream-leader
+    targetRevision: 4.8.1
+    helm:
+      valueFiles:
+      - $values/charts/criblio/logestream-leader.yml
+
+  - repoURL: 'https://criblio.github.io/helm-charts/'
+    chart: logstream-workergroup
+    targetRevision: 4.8.1
+    helm:
+      valueFiles:
+      - $values/charts/criblio/logstream-wg-pci.yml
+
+  - repoURL: 'https://criblio.github.io/helm-charts/'
+    chart: logstream-workergroup
+    targetRevision: 4.8.1
+    helm:
+      valueFiles:
+      - $values/charts/criblio/logstream-wg-system-metrics.yml
+
+  - repoURL: https://github.com/stinnux/argocd/
+    targetRevision: HEAD
+    ref: values
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
