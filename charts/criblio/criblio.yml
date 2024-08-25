@@ -30,6 +30,14 @@ spec:
       valueFiles:
       - $values/charts/criblio/logstream-wg-system-metrics.yml
 
+  - repoURL: 'https://criblio.github.io/helm-charts/'
+    chart: edge
+    targetRevision: 4.8.1
+    helm:
+      valueFiles:
+      - $values/charts/criblio/edge.yml
+
+
   - repoURL: https://github.com/stinnux/argocd/
     targetRevision: HEAD
     ref: values
