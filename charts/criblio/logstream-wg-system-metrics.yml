@@ -1,4 +1,4 @@
 config:
-  host: ls-leader-internal
+  host: criblio-prod-leader-internal
   tag: system-metrics
   token: b6d0d24c-b740-455e-96d0-d1aa0e025cbe
