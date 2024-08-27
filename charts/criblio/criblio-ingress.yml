@@ -1,0 +1,14 @@
+kind: IngressRoute
+apiVersion: traefik.io/v1alpha1
+metadata:
+  name: criblio-ingress
+  namespace: cribl-stream
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`cribl.k8s.stinnux.cloud`)
+    kind: Rule
+    services:
+    - name: criblio-prod-leader
+      port: 9000
