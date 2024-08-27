@@ -20,6 +20,7 @@ spec:
     chart: logstream-workergroup
     targetRevision: 4.8.1
     helm:
+      releaseName: logstream-wg-pci
       valueFiles:
       - $values/charts/criblio/logstream-wg-pci.yml
 
@@ -27,6 +28,7 @@ spec:
     chart: logstream-workergroup
     targetRevision: 4.8.1
     helm:
+      releaseName: logstream-wg-metrics
       valueFiles:
       - $values/charts/criblio/logstream-wg-system-metrics.yml
 
