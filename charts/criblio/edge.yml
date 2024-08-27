@@ -1,4 +1,0 @@
-config:
-cribl:
-  leader: tcp://b6d0d24c-b740-455e-96d0-d1aa0e025cbe@criblio-prod-leader-internal?group=default_fleet
-
