@@ -2,4 +2,5 @@
 replicaCount: 3
 
 config:
-  leader: tcp://b6d0d24c-b740-455e-96d0-d1aa0e025cbe@cribl.k8s.stinnux.cloud?group=default_fleet
+  cribl:
+    leader: tcp://b6d0d24c-b740-455e-96d0-d1aa0e025cbe@criblio-prod-leader-internal?group=default_fleet
