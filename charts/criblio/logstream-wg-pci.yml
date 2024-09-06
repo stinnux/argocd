@@ -1,4 +1,5 @@
-replicaCount: null
+# Set to three despite HPA not working
+replicaCount: 3
 
 config:
   host: criblio-prod-leader-internal
