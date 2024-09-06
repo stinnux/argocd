@@ -1,3 +1,5 @@
+replicaCount: null
+
 config:
   host: criblio-prod-leader-internal
   tag: pcilogs
