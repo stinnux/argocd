@@ -20,9 +20,15 @@ spec:
     chart: logstream-workergroup
     targetRevision: 4.8.1
     helm:
-      releaseName: logstream-wg-pci
       valueFiles:
       - $values/charts/criblio/logstream-wg-pci.yml
+
+  - repoURL: 'https://criblio.github.io/helm-charts/'
+    chart: edge
+    targetRevision: 4.8.1
+    helm:
+      valueFiles:
+      - $values/charts/criblio/edge.yml
 
   - repoURL: https://github.com/stinnux/argocd/
     targetRevision: HEAD
