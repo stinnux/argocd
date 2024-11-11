@@ -1,0 +1,14 @@
+kind: IngressRoute
+apiVersion: traefik.io/v1alpha1
+metadata:
+  name: kubeai-ingress
+  namespace: kubeai
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - match: Host(`ai.k8s.stinnux.cloud`)
+    kind: Rule
+    services:
+    - name: openwebui
+      port: 80
