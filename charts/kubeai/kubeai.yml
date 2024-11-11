@@ -9,8 +9,8 @@ spec:
     server: 'https://kubernetes.default.svc'
   project: default
   sources:
-  - repoURL: 'https://www.kubeai.org'
-    chart: kubeai
+  - repoURL: https://www.kubeai.org
+    chart: kubeai/kubeai
     targetRevision: 0.10.0
     helm:
       valueFiles:
