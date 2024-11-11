@@ -10,7 +10,7 @@ spec:
   project: default
   sources:
   - repoURL: https://www.kubeai.org
-    chart: kubeai/kubeai
+    chart: kubeai
     targetRevision: 0.8.0
     helm:
       valueFiles:
