@@ -11,7 +11,6 @@ spec:
   sources:
   - repoURL: https://www.kubeai.org
     chart: kubeai/kubeai
-    targetRevision: 0.10.0
     helm:
       valueFiles:
       - $values/charts/kubeai/values.yml
