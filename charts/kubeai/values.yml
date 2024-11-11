@@ -1,0 +1,5 @@
+models:
+  catalog:
+    faster-whisper-medium-en-cpu:
+      enabled: true
+      minReplicas: 1

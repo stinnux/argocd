@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kubeai-prod
+  namespace: argocd
+spec:
+  destination:
+    namespace: kubeai
+    server: 'https://kubernetes.default.svc'
+  project: default
+  sources:
+  - repoURL: 'https://www.kubeai.org'
+    chart: kubeai
+    targetRevision: 0.10.0
+    helm:
+      valueFiles:
+      - $values/charts/kubeai/values.yml
+
+  - repoURL: https://github.com/stinnux/argocd/
+    targetRevision: HEAD
+    ref: values
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
