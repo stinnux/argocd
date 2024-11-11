@@ -16,6 +16,13 @@ spec:
       valueFiles:
       - $values/charts/kubeai/values.yml
 
+  - repoURL: https://www.kubeai.org
+    chart: kubeai-models
+    targetRevision: 0.8.0
+    helm:
+      valueFiles:
+      - $values/charts/kubeai/models.yml
+
   - repoURL: https://github.com/stinnux/argocd/
     targetRevision: HEAD
     ref: values
