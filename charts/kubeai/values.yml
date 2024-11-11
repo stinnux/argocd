@@ -3,3 +3,12 @@ models:
     faster-whisper-medium-en-cpu:
       enabled: true
       minReplicas: 1
+    gemma2-2b-cpu:
+      enabled: true
+      minReplicas: 0
+    qwen2-500m-cpu:
+      enabled: true
+    nomic-embed-text-cpu:
+      enabled: true
+    llama-3.1-8b-instruct-cpu.yaml:
+      enabled: true
