@@ -9,5 +9,5 @@ catalog:
     enabled: true
   nomic-embed-text-cpu:
     enabled: true
-  llama-3.1-8b-instruct-cpu.yaml:
+  llama-3.1-8b-instruct-cpu:
     enabled: true
