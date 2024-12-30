@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: isponsorblocktv-prod
+  namespace: isponsorblocktv
+spec:
+  destination:
+    namespace: isponsorblocktv
+    server: 'https://kubernetes.default.svc'
+  project: default
+  sources:
+  - repoURL: 'https://xvilo.github.io/helm-charts/'
+    chart: isponsorblocktv
+    targetRevision: 0.1.2
+    helm:
+      valueFiles:
+      - $values/charts/iSponsorBlockTV/values.yml
+
+  - repoURL: https://github.com/stinnux/argocd/
+    targetRevision: HEAD
+    ref: values
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
