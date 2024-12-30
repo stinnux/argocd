@@ -3,22 +3,22 @@
 # Declare variables to be passed into your templates.
 
 config:
-  devices: []
-    # - screen_id: "xxxxxxxxxx"
-    #   name: "Apple TV 4K"
-    #   offset: 0
+  devices:
+  - screen_id: "556492049328"
+    name: "Apple TV 4K"
+    offset: 0
   apikey: ""
   skip_categories:
-    - "sponsor"
-    - "selfpromo"
-    - "intro"
-    - "outro"
-    - "music_offtopic"
-    - "interaction"
-    - "exclusive_access"
-    - "poi_highlight"
-    - "preview"
-    - "filler"
+  - "sponsor"
+  - "selfpromo"
+  - "intro"
+  - "outro"
+  - "music_offtopic"
+  - "interaction"
+  - "exclusive_access"
+  - "poi_highlight"
+  - "preview"
+  - "filler"
   channel_whitelist: []
   skip_count_tracking: true
   mute_ads: true
@@ -47,8 +47,7 @@ serviceAccount:
 
 podAnnotations: {}
 
-podSecurityContext: {}
-  # fsGroup: 2000
+podSecurityContext: {} # fsGroup: 2000
 
 resources: {}
   # We usually recommend not to specify default resources and to leave this as a conscious
