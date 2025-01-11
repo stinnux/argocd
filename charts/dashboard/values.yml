@@ -17,7 +17,7 @@ app:
   # Mode determines if chart should deploy a full Dashboard with all containers or just the API.
   # - dashboard - deploys all the containers
   # - api - deploys just the API
-  mode: 'dashboard'
+  mode: "dashboard"
   image:
     pullPolicy: IfNotPresent
     pullSecrets: []
@@ -373,7 +373,7 @@ kong:
   ## Configuration reference: https://docs.konghq.com/gateway/3.6.x/reference/configuration
   env:
     dns_order: LAST,A,CNAME,AAAA,SRV
-    plugins: 'off'
+    plugins: "off"
     nginx_worker_processes: 1
   ingressController:
     enabled: false
