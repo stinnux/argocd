@@ -16,9 +16,9 @@ spec:
     #   valueFiles:
     #   - $values/charts/dashboard/values.yml
 
-  - repoURL: https://github.com/stinnux/argocd/
-    targetRevision: HEAD
-    ref: values
+  # - repoURL: https://github.com/stinnux/argocd/
+  #   targetRevision: HEAD
+  #   ref: values
 
   syncPolicy:
     syncOptions:
