@@ -12,9 +12,9 @@ spec:
   - repoURL: 'https://kubernetes.github.io/dashboard'
     chart: kubernetes-dashboard
     targetRevision: 7.10.1
-    helm:
-      valueFiles:
-      - $values/charts/dashboard/values.yml
+    # helm:
+    #   valueFiles:
+    #   - $values/charts/dashboard/values.yml
 
   - repoURL: https://github.com/stinnux/argocd/
     targetRevision: HEAD
