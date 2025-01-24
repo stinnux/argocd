@@ -12,10 +12,10 @@ spec:
   sources:
   - repoURL: 'https://jameswynn.github.io/helm-charts'
     chart: homepage
-    targetRevision: 1.2.3
+    targetRevision: 2.0.1
     helm:
       valueFiles:
-      - $values/homepage/values.yml
+      - $values/charts/homepage/values.yml
   - repoURL: https://github.com/stinnux/argocd
     targetRevision: HEAD
     ref: values
