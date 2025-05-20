@@ -11,21 +11,21 @@ spec:
   sources:
   - repoURL: 'https://criblio.github.io/helm-charts/'
     chart: logstream-leader
-    targetRevision: 4.9.3
+    targetRevision: 4.11.1
     helm:
       valueFiles:
       - $values/charts/criblio/logstream-leader.yml
 
   - repoURL: 'https://criblio.github.io/helm-charts/'
     chart: logstream-workergroup
-    targetRevision: 4.9.3
+    targetRevision: 4.11.1
     helm:
       valueFiles:
       - $values/charts/criblio/logstream-wg-pci.yml
 
   - repoURL: 'https://criblio.github.io/helm-charts/'
     chart: edge
-    targetRevision: 4.9.3
+    targetRevision: 4.11.1
     helm:
       valueFiles:
       - $values/charts/criblio/edge.yml
