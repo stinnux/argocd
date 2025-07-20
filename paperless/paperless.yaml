@@ -374,8 +374,8 @@ spec:
             - -f
             - http://localhost:8000
           failureThreshold: 5
-          periodSeconds: 30
-          timeoutSeconds: 10
+          periodSeconds: 60
+          timeoutSeconds: 30
           initialDelaySeconds: 300
         ports:
         - containerPort: 8000
