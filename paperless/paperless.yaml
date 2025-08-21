@@ -159,7 +159,7 @@ spec:
           value: paperless
         - name: PGDATA
           value: /var/lib/postgresql/data/pgdata
-        image: postgres:14
+        image: pgautoupgrade/pgautoupgrade:14-alpine3.21
         name: paperless-db
         command: ["/bin/sh"]
         args: ["-c", "sleep 3600"]
