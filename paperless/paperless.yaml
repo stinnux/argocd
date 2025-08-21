@@ -159,7 +159,7 @@ spec:
           value: paperless
         - name: PGDATA
           value: /var/lib/postgresql/data/pgdata
-        image: postgres:13
+        image: postgres:14
         name: paperless-db
         resources: {}
         ports:
