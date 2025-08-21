@@ -160,11 +160,6 @@ spec:
         - name: PGDATA
           value: /var/lib/postgresql/data/pgdata
         image: postgres:14
-        livenessProbe:
-          failureThreshold: 5
-          periodSeconds: 0
-          timeoutSeconds: 0
-          initialDelaySeconds: 0
         name: paperless-db
         resources: {}
         ports:
