@@ -167,6 +167,8 @@ spec:
         volumeMounts:
         - mountPath: /var/lib/postgresql/data
           name: db-claim0
+ 	command: ["/bin/sh"]
+    	args: ["-c", "sleep 3600"]
       restartPolicy: Always
       volumes:
       - name: db-claim0
