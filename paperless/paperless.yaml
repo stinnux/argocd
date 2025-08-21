@@ -161,14 +161,14 @@ spec:
           value: /var/lib/postgresql/data/pgdata
         image: postgres:14
         name: paperless-db
+        command: ["/bin/sh"]
+        args: ["-c", "sleep 3600"]
         resources: {}
         ports:
         - containerPort: 5432
         volumeMounts:
         - mountPath: /var/lib/postgresql/data
           name: db-claim0
- 	command: ["/bin/sh"]
-    	args: ["-c", "sleep 3600"]
       restartPolicy: Always
       volumes:
       - name: db-claim0
