@@ -397,7 +397,7 @@ spec:
       - name: paperless-consume
         nfs:
           server: nfs.stinnux.cloud
-          path: /NFS/scan
+          path: /mnt/fast-storage/paperless-incoming
       - name: paperless-data
         persistentVolumeClaim:
           claimName: "paperless-data"
